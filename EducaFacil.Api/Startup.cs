@@ -30,6 +30,8 @@ namespace EducaFacil.Api
         {
             services.AddControllers();
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddDbContext<DataContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 

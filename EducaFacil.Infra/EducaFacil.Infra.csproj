@@ -14,4 +14,8 @@
     <ProjectReference Include="..\EducaFacil.Domain\EducaFacil.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Context\Mappings\" />
+  </ItemGroup>
+
 </Project>
