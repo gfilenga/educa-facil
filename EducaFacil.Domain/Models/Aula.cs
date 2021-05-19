@@ -19,7 +19,6 @@ namespace EducaFacil.Domain.Models
         public int TimeInMinutes { get; set; }
 
         // Relacionamentos
-
         // Modulo
         public Guid ModuloId { get; set; }
         public Modulo Modulo { get; set; }

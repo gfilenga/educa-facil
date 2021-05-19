@@ -12,12 +12,19 @@ namespace EducaFacil.Api.Configuration
     {
         public static IServiceCollection ResolveDependencies(this IServiceCollection services)
         {
+            // Context
             services.AddScoped<DataContext>();
-            services.AddScoped<IAlunoRepository, AlunoRepository>();
 
-            services.AddScoped<INotificator, Notificator>();
+            // Aluno
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IAlunoService, AlunoService>();
 
+            // Curso
+            services.AddScoped<ICursoRepository, CursoRepository>();
+            services.AddScoped<ICursoService, CursoService>();
+
+            services.AddScoped<INotificator, Notificator>();
+            
             return services;
         }
     }

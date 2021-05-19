@@ -12,9 +12,15 @@ namespace EducaFacil.Api.Configuration
     {
         public AutoMapperConfig()
         {
+            // Aluno
             CreateMap<CreateAlunoCommand, Aluno>();
             CreateMap<Aluno, ListAlunoCommand>().ReverseMap();
             CreateMap<Aluno, UpdateAlunoCommand>().ReverseMap();
+
+            // Curso
+            CreateMap<Curso, CreateCursoCommand>().ReverseMap();
+            CreateMap<Curso, ListCursoCommand>().ReverseMap();
+            CreateMap<Curso, UpdateCursoCommand>().ReverseMap();
         }
     }
 }

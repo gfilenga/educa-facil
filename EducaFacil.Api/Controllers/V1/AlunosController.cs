@@ -46,8 +46,7 @@ namespace EducaFacil.Api.Controllers
 
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<UpdateAlunoCommand>> Update(Guid id,
-                                                                   UpdateAlunoCommand command
-        )
+                                                                   UpdateAlunoCommand command)
         {
             if (id != command.Id)
             {
