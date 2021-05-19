@@ -13,7 +13,7 @@ namespace EducaFacil.Api.Commands
         public String Name { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Digite um {0} válido")]
         public String Email { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]

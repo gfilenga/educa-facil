@@ -3,45 +3,48 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using EducaFacil.Api.Commands;
+using EducaFacil.Domain.Interfaces;
 using EducaFacil.Domain.Models;
 using EducaFacil.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EducaFacil.Api.Controllers
 {
-    [Route("api/alunos")]
+    [Route("api/v1/alunos")]
     [ApiController]
     public class AlunosController : MainController
     {
         private readonly IAlunoRepository _repository;
+        private readonly IAlunoService _alunoService;
         private readonly IMapper _mapper;
 
-        public AlunosController(IAlunoRepository repository, 
-                                IMapper mapper)
+        public AlunosController(IAlunoRepository repository,
+                                IAlunoService alunoService,
+                                IMapper mapper,
+                                INotificator notificator) : base (notificator)
         {
             _repository = repository;
+            _alunoService = alunoService;
             _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<ActionResult<CreateAlunoCommand>> Create(CreateAlunoCommand command)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var aluno = _mapper.Map<Aluno>(command);
-                      
-            await _repository.Create(aluno);
+            await _alunoService.Create(_mapper.Map<Aluno>(command));
 
-            return CreatedAtAction("Create", aluno);
+            return CustomResponse(command);
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ListAlunoCommand>>> List()
+        public async Task<IEnumerable<ListAlunoCommand>> List()
         {
-            return Ok(_mapper.Map<IEnumerable<ListAlunoCommand>>(await _repository.GetAll()));
+            return _mapper.Map<IEnumerable<ListAlunoCommand>>(await _repository.GetAll());
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
         public async Task<ActionResult> DeleteAluno(Guid id)
         {
             var aluno = await _repository.GetByIdNoTracking(id);
