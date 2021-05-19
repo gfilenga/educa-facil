@@ -10,5 +10,7 @@ namespace EducaFacil.Domain.Interfaces
     public interface IAlunoService : IDisposable
     {
         Task Create(Aluno aluno);
+        Task Update(Aluno aluno);
+        Task<bool> Delete(Guid id);
     }
 }

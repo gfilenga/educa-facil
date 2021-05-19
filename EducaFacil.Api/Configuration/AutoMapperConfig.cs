@@ -14,6 +14,7 @@ namespace EducaFacil.Api.Configuration
         {
             CreateMap<CreateAlunoCommand, Aluno>();
             CreateMap<Aluno, ListAlunoCommand>().ReverseMap();
+            CreateMap<Aluno, UpdateAlunoCommand>().ReverseMap();
         }
     }
 }

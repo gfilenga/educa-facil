@@ -26,6 +26,21 @@ namespace EducaFacil.Domain.Services
 
             await _alunoRepository.Create(aluno);
         }
+        public async Task Update(Aluno aluno)
+        {
+            if (!ExecutarValidacao(new AlunoValidator(), aluno)) return;
+
+            await _alunoRepository.Put(aluno);
+
+            return;
+        }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            await _alunoRepository.Delete(id);
+
+            return true;
+        }
 
         public void Dispose()
         {

@@ -44,6 +44,24 @@ namespace EducaFacil.Api.Controllers
             return _mapper.Map<IEnumerable<ListAlunoCommand>>(await _repository.GetAll());
         }
 
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult<UpdateAlunoCommand>> Update(Guid id,
+                                                                   UpdateAlunoCommand command
+        )
+        {
+            if (id != command.Id)
+            {
+                NotificarErro("O id informado não é o mesmo que foi passado na query");
+                return CustomResponse(command);
+            }
+
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            await _alunoService.Update(_mapper.Map<Aluno>(command));
+
+            return CustomResponse(command);
+        }
+
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult> DeleteAluno(Guid id)
         {
@@ -51,7 +69,7 @@ namespace EducaFacil.Api.Controllers
             
             if (aluno == null)  return NotFound();
             
-            await _repository.Delete(id);
+            await _alunoService.Delete(id);
 
             return NoContent();
         }
