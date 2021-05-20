@@ -23,6 +23,10 @@ namespace EducaFacil.Api.Configuration
             services.AddScoped<ICursoRepository, CursoRepository>();
             services.AddScoped<ICursoService, CursoService>();
 
+            // Modulo
+            services.AddScoped<IModuloRepository, ModuloRepository>();
+            services.AddScoped<IModuloService, ModuloService>();
+
             services.AddScoped<INotificator, Notificator>();
             
             return services;

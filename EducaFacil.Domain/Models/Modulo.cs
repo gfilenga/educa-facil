@@ -16,7 +16,7 @@ namespace EducaFacil.Domain.Models
             Aulas = new List<Aula>();
         }
 
-        public String Titulo { get; set; }
+        public string Titulo { get; set; }
         public int TimeInMinutes { get; set; }
 
         // Relacionamentos

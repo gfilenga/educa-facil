@@ -22,7 +22,7 @@ namespace EducaFacil.Domain.Models
         // Relacionamentos
 
         // Modulo
-        public ICollection<Modulo> Modulos { get; set; }
+        public IList<Modulo> Modulos { get; set; }
 
         // Aluno
         public IList<AlunoCurso> AlunoCursos { get; set; }

@@ -31,7 +31,7 @@ namespace EducaFacil.Infra.Repositories
 
         public virtual async Task<List<TEntity>> GetAll()
         {
-            return await DbSet.ToListAsync();
+            return await DbSet.AsNoTracking().ToListAsync();
         }
 
         public virtual async Task<TEntity> GetById(Guid id)
