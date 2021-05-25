@@ -36,6 +36,10 @@ namespace EducaFacil.Api.Configuration
             services.AddScoped<IAssinaturaRepository, AssinaturaRepository>();
             services.AddScoped<IAssinaturaService, AssinaturaService>();
 
+            // Pagamento
+            services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+            services.AddScoped<IPagamentoService, PagamentoService>();
+
             services.AddScoped<INotificator, Notificator>();
             
             return services;

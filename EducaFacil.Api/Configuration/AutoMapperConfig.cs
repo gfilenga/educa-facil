@@ -36,6 +36,12 @@ namespace EducaFacil.Api.Configuration
             CreateMap<Assinatura, CreateAssinaturaCommand>().ReverseMap();
             CreateMap<Assinatura, ListAssinaturaCommand>().ReverseMap();
             CreateMap<Assinatura, UpdateAssinaturaCommand>().ReverseMap();
+
+            // Pagamento 
+
+            CreateMap<Pagamento, CreatePagamentoCommand>().ReverseMap();
+            CreateMap<Pagamento, ListPagamentoCommand>().ReverseMap();
+            CreateMap<Pagamento, UpdatePagamentoCommand>().ReverseMap();
         }
     }
 }
