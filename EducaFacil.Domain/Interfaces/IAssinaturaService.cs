@@ -7,11 +7,10 @@ using EducaFacil.Domain.Models;
 
 namespace EducaFacil.Domain.Interfaces
 {
-    public interface IAlunoService : IDisposable
+    public interface IAssinaturaService : IDisposable
     {
-        Task Create(Aluno aluno);
-        Task Update(Aluno aluno);
+        Task Create(Assinatura assinatura);
+        Task Update(Assinatura assinatura);
         Task<bool> Delete(Guid id);
-        Task<bool> Delete(Aluno aluno);
     }
 }

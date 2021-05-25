@@ -15,7 +15,7 @@ namespace EducaFacil.Domain.Models
             AssinaturaId = assinaturaId;
         }
 
-        public Decimal Value { get; set; }
+        public decimal Value { get; set; }
         public DateTime Days { get; set; }
 
         // Relacionamentos

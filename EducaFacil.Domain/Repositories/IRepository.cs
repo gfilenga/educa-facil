@@ -10,9 +10,11 @@ namespace EducaFacil.Domain.Repositories
     {
         Task Create(TEntity entity);
         Task<TEntity> GetById(Guid id);
+        Task<TEntity> GetByIdNoTracking(Guid id);
         Task<List<TEntity>> GetAll();
         Task Put(TEntity entity);
         Task Delete(Guid id);
+        Task Delete(TEntity entity);
         Task<IEnumerable<TEntity>> Search(Expression<Func<TEntity, bool>> predicate);
         Task<int> SaveChanges();
     }

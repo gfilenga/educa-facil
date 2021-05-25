@@ -9,6 +9,5 @@ namespace EducaFacil.Domain.Repositories
 {
     public interface ICursoRepository : IRepository<Curso>
     {
-        Task<Curso> GetByIdNoTracking(Guid id);
     }
 }

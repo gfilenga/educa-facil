@@ -41,10 +41,18 @@ namespace EducaFacil.Domain.Services
 
             return true;
         }
+        public async Task<bool> Delete(Aluno aluno)
+        {
+            await _alunoRepository.Delete(aluno);
+
+            return true;
+        }
 
         public void Dispose()
         {
             _alunoRepository?.Dispose();
         }
+
+        
     }
 }

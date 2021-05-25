@@ -26,6 +26,16 @@ namespace EducaFacil.Api.Configuration
             CreateMap<Modulo, CreateModuloCommand>().ReverseMap();
             CreateMap<Modulo, ListModuloCommand>().ReverseMap();
             CreateMap<Modulo, UpdateModuloCommand>().ReverseMap();
+
+            // Aula
+            CreateMap<Aula, CreateAulaCommand>().ReverseMap();
+            CreateMap<Aula, ListAulaCommand>().ReverseMap();
+            CreateMap<Aula, UpdateAulaCommand>().ReverseMap();
+
+            // Assinatura
+            CreateMap<Assinatura, CreateAssinaturaCommand>().ReverseMap();
+            CreateMap<Assinatura, ListAssinaturaCommand>().ReverseMap();
+            CreateMap<Assinatura, UpdateAssinaturaCommand>().ReverseMap();
         }
     }
 }
