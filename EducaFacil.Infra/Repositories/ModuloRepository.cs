@@ -15,10 +15,5 @@ namespace EducaFacil.Infra.Repositories
         public ModuloRepository(DataContext context) : base(context)
         {
         }
-
-        public virtual async Task<Modulo> GetByIdNoTracking(Guid id)
-        {
-            return await DbSet.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
-        }
     }
 }

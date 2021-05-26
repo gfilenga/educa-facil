@@ -24,11 +24,23 @@ namespace EducaFacil.Domain.Services
         {
             if (!ExecutarValidacao(new AlunoValidator(), aluno)) return;
 
+            if (_alunoRepository.Search(a => a.Email == aluno.Email).Result.Any())
+            {
+                Notificar("Email já cadastrado!");
+                return;
+            }
+
             await _alunoRepository.Create(aluno);
         }
         public async Task Update(Aluno aluno)
         {
             if (!ExecutarValidacao(new AlunoValidator(), aluno)) return;
+
+            if (_alunoRepository.Search(a => a.Email == aluno.Email).Result.Any())
+            {
+                Notificar("Email já cadastrado!");
+                return;
+            }
 
             await _alunoRepository.Put(aluno);
 
@@ -52,7 +64,5 @@ namespace EducaFacil.Domain.Services
         {
             _alunoRepository?.Dispose();
         }
-
-        
     }
 }

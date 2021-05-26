@@ -37,11 +37,18 @@ namespace EducaFacil.Api.Controllers
 
             return CustomResponse(command);
         }
-
+        /*
         [HttpGet]
         public async Task<IEnumerable<ListAlunoCommand>> List()
         {
             return _mapper.Map<IEnumerable<ListAlunoCommand>>(await _repository.GetAll());
+        }
+        */
+
+        [HttpGet]
+        public async Task<IEnumerable<ListAlunoCommand>> ListAlunosAssinatura()
+        {
+            return _mapper.Map<IEnumerable<ListAlunoCommand>>(await _repository.GetAlunosAssinatura());
         }
 
         [HttpPut("{id:guid}")]

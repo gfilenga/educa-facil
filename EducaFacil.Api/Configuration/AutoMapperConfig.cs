@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EducaFacil.Api.Commands;
+using EducaFacil.Api.ViewModels;
 using EducaFacil.Domain.Models;
 
 namespace EducaFacil.Api.Configuration
@@ -36,6 +37,7 @@ namespace EducaFacil.Api.Configuration
             CreateMap<Assinatura, CreateAssinaturaCommand>().ReverseMap();
             CreateMap<Assinatura, ListAssinaturaCommand>().ReverseMap();
             CreateMap<Assinatura, UpdateAssinaturaCommand>().ReverseMap();
+            CreateMap<Assinatura, AssinaturaViewModel>().ReverseMap();
 
             // Pagamento 
 
