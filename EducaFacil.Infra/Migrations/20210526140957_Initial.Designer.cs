@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EducaFacil.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210510153219_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210526140957_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -206,11 +206,13 @@ namespace EducaFacil.Infra.Migrations
                     b.HasOne("EducaFacil.Domain.Models.Aluno", "Aluno")
                         .WithMany("AlunoCursos")
                         .HasForeignKey("AlunoId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("EducaFacil.Domain.Models.Curso", "Curso")
                         .WithMany("AlunoCursos")
                         .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Aluno");
@@ -223,6 +225,7 @@ namespace EducaFacil.Infra.Migrations
                     b.HasOne("EducaFacil.Domain.Models.Aluno", "Aluno")
                         .WithOne("Assinatura")
                         .HasForeignKey("EducaFacil.Domain.Models.Assinatura", "AlunoId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Aluno");
@@ -233,6 +236,7 @@ namespace EducaFacil.Infra.Migrations
                     b.HasOne("EducaFacil.Domain.Models.Modulo", "Modulo")
                         .WithMany("Aulas")
                         .HasForeignKey("ModuloId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Modulo");
@@ -243,6 +247,7 @@ namespace EducaFacil.Infra.Migrations
                     b.HasOne("EducaFacil.Domain.Models.Curso", "Curso")
                         .WithMany("Modulos")
                         .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Curso");
@@ -253,6 +258,7 @@ namespace EducaFacil.Infra.Migrations
                     b.HasOne("EducaFacil.Domain.Models.Assinatura", "Assinatura")
                         .WithMany("Pagamentos")
                         .HasForeignKey("AssinaturaId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Assinatura");
