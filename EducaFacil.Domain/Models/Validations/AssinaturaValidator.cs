@@ -13,7 +13,7 @@ namespace EducaFacil.Domain.Models.Validations
         {
             RuleFor(assinatura => assinatura.DataExpiracao)
                 .NotEmpty().WithMessage("Preencha a data de expiração")
-                .GreaterThan(DateTime.Now);
+                .GreaterThan(DateTime.Now).WithMessage("{PropertyName} deve ser maior que a data atual");
         }
     }
 }

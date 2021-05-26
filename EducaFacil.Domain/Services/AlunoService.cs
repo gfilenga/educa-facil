@@ -13,11 +13,14 @@ namespace EducaFacil.Domain.Services
     public class AlunoService : BaseService, IAlunoService
     {
         private readonly IAlunoRepository _alunoRepository;
+        private readonly IAssinaturaService _assinaturaService;
 
         public AlunoService(IAlunoRepository alunoRepository,
-                            INotificator notificator) : base(notificator)
+                            INotificator notificator, 
+                            IAssinaturaService assinaturaService) : base(notificator)
         {
             _alunoRepository = alunoRepository;
+            _assinaturaService = assinaturaService;
         }
 
         public async Task Create(Aluno aluno)
@@ -55,6 +58,12 @@ namespace EducaFacil.Domain.Services
         }
         public async Task<bool> Delete(Aluno aluno)
         {
+            if (aluno.Assinatura != null)
+            {
+                Notificar("Esse aluno possui assinatura ativa e não pode ser deletado!");
+                return false;
+            }
+
             await _alunoRepository.Delete(aluno);
 
             return true;

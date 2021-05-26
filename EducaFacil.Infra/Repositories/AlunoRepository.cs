@@ -16,5 +16,10 @@ namespace EducaFacil.Infra.Repositories
         {
             return await Context.Alunos.AsNoTracking().Include(a => a.Assinatura).ToListAsync();
         }
+
+        public async Task<Aluno> GetAlunoAssinatura(Guid id)
+        {
+            return await Context.Alunos.AsNoTracking().Include(a => a.Assinatura).FirstOrDefaultAsync(a => a.Id == id);
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace EducaFacil.Api.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult> DeleteAluno(Guid id)
         {
-            var aluno = await _repository.GetById(id);
+            var aluno = await _repository.GetAlunoAssinatura(id);
             
             if (aluno == null)  return NotFound();
             
